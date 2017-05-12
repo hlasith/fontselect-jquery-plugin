@@ -16,6 +16,7 @@
 
 // USE YOUR OWN GOOGLE API KEY, THIS ONE WILL NOT BE ALLOWED
 // Get your free own key at https://console.developers.google.com/projectselector/apis/credentials
+// creates a bash script to use with https://github.com/neverpanic/google-font-download
 $google_api_key = 'AIzaSyD8D9iru_TSvGkjTbC_lEE5cl_rXmPeWnE';
 ?>
 <!DOCTYPE html>
@@ -77,13 +78,13 @@ $google_api_key = 'AIzaSyD8D9iru_TSvGkjTbC_lEE5cl_rXmPeWnE';
                 $('#result-count').html(numberOfFonts + ' fonts found');
                 for (var i = 0; i < data.items.length; i++) {
                     currentFont = data.items[i];
-                    output += "sh google-font-download";
-                    var currentFontFamilyFile = currentFont.family.replace(" ","_");
+                    output += "sh ./google-font-download";
+                    var currentFontFamilyFile = currentFont.family.replace(/ /g, '_');
                     for (var j = 0; j < currentFont.variants.length; j++) {
                         output += ' "' + currentFont.family + ':' + currentFont.variants[j] + '"';
                     }
 
-                    output += " -o"+currentFontFamilyFile+".css\n"
+                    output += " -o"+currentFontFamilyFile+".css;\n"
                 }
 
                 // remove ':regular' and last comma

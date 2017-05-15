@@ -1,0 +1,33 @@
+How to Download fonts locally
+
+1. check out git@github.com:hlasith/fontselect-jquery-plugin.git
+
+2. goto /get-latest-google-fonts-bash.php
+
+3. select the list by popularity and submit
+
+4. select the number of font you need from the text area.
+
+5. goto /google-font-download and edit google-font-download-popular-script.sh 
+
+6. copy selected fonts to google-font-download-popular-script.sh
+
+7. run google-font-download-popular-script.sh
+
+8. popular google fonts will download.
+
+how to create google-fonts.js json to use with jquery.fontselect.js
+
+1. get the google fonts json sorted by popularity
+
+https://www.googleapis.com/webfonts/v1/webfonts?sort=popularity&key=AIzaSyDWLAUv5-3fF4-YI6yrFaXMSXeJ-eQWlZ0
+
+2. goto /google-fonts-comple and edit and replace with the json from previous step.
+
+3. Then, use the generator to create `google-fonts.json`.
+
+```sh
+node ./google-fonts-generator.js
+```
+
+4. edit and remove additional fonts from google-fonts.json

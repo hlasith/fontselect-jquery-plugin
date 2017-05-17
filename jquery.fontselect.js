@@ -21,7 +21,7 @@
             placeholder: options.placeholder ? options.placeholder : 'Select a font',
             lookahead: options.lookahead ? options.lookahead : 2,
             api: '//fonts.googleapis.com/css?family=',
-            fontPath: options.fontPath ? options.fontPath : 'vendor/vp-google-font/Sourcecode/public/fonts/',
+            fontPath: options.fontPath ? options.fontPath : '',
             addNoneOption: true
         };
 
@@ -379,12 +379,26 @@
             Fontselect.prototype.addFontLink = function (font) {
 
                 var defaultFontWeight = Fontselect.prototype.getDefaultFontWeight(font);
-                var fontLink =  font.replace(/ /g, "_");
-                var link = this.options.fontPath + fontLink + ".css";
 
-                if ($("link[href*='" + font + "']").length === 0) {
-                    $('link:last').after('<link href="' + link + '" rel="stylesheet" type="text/css">');
+                // check if local font path exist else get fonts from google
+                if (this.options.fontPath != "" && this.options.fontPath != undefined ) {
+                    var fontLink =  font.replace(/ /g, "_");
+                    var link = this.options.fontPath + fontLink + ".css";
+
+                    if ($("link[href*='" + font + "']").length === 0) {
+                        $('link:last').after('<link href="' + link + '" rel="stylesheet" type="text/css">');
+                    }
+                }else {
+                    
+                    var link = this.options.api + font + ":" + defaultFontWeight;
+
+                    if ($("link[href*='" + font + "']").length === 0) {
+                        $('link:last').after('<link href="' + link + '" rel="stylesheet" type="text/css">');
+                    }
+                    
                 }
+
+
             };
 
             return Fontselect;

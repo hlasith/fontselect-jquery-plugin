@@ -21,6 +21,7 @@
             placeholder: options.placeholder ? options.placeholder : 'Select a font',
             lookahead: options.lookahead ? options.lookahead : 2,
             api: '//fonts.googleapis.com/css?family=',
+            fontPath: "vendor/vp-google-font/Sourcecode/public/fonts/",
             addNoneOption: true
         };
 
@@ -378,8 +379,8 @@
             Fontselect.prototype.addFontLink = function (font) {
 
                 var defaultFontWeight = Fontselect.prototype.getDefaultFontWeight(font);
-
-                var link = this.options.api + font + ":" + defaultFontWeight;
+                var fontLink =  font.replace(/ /g, "_");
+                var link = this.options.fontPath + fontLink + ".css";
 
                 if ($("link[href*='" + font + "']").length === 0) {
                     $('link:last').after('<link href="' + link + '" rel="stylesheet" type="text/css">');

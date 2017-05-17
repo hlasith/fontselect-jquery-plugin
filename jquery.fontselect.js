@@ -21,7 +21,7 @@
             placeholder: options.placeholder ? options.placeholder : 'Select a font',
             lookahead: options.lookahead ? options.lookahead : 2,
             api: '//fonts.googleapis.com/css?family=',
-            fontPath: "vendor/vp-google-font/Sourcecode/public/fonts/",
+            fontPath: options.fontPath ? options.fontPath : 'vendor/vp-google-font/Sourcecode/public/fonts/',
             addNoneOption: true
         };
 
